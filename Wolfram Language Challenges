@@ -1,0 +1,15 @@
+Given a positive integer n, find the frequencies of the digits from 0 to 9 of the number:
+DigitFrequenciesInThePowersOfTwo[n_Integer?Positive]:=
+      Table[Count[IntegerDigits[2^n],d],{d,0,9,1}]
+
+Given three points in 3D space, determine the angles (in degrees) of the triangle they form.
+ThreeAngles[{p_,q_,r_}]:= (
+      a= Norm[p-q]; b= Norm[p-r];c= Norm[q-r];
+      T = ArcCos[(-a^2 + b^2 + c^2)/(2 *b *c)];
+      R = ArcCos[(a^2 - b^2 + c^2)/(2 *a *c)];
+      Y = ArcCos[(a^2 + b^2 - c^2)/(2 *a *b)];
+   N[Sort[{T/Degree, R/Degree, Y/Degree}]])
+
+Given a list of integers, rearrange them so that all of the odd integers appear before all of the even integers, without otherwise changing the order.
+OddBeforeEven[list:{__Integer}]:=
+  Join[Select[list, OddQ], Select[list, EvenQ]]
